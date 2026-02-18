@@ -1,0 +1,17 @@
+Snort -The Challenge
+
+Activity description: This is a a challenge to investigate a series of traffic data and stop malicious activity under two different scenarios, live and captured traffic, working with Snort.
+
+Tools used: Linux, Virtual Machine, Snort
+
+Methodology:
+1.	Challenge 1: Writing IDS rules (HTTP) – Learned how to create a rule to filter traffic coming from and to TCP port 80. Investigated the log file to find information like destination and source addresses, ACK number and source port of specific packets.
+2.	Challenge 2: Writing IDS Rules (FTP) – First, I created a rule to detect all the traffic on port 21. Since the outcome was a binary file, I made it “readable” using the command “string” and then I applied “grep” to filter the logs contained in the file by a specific selected pattern. Learned how to use the “content” filter within the rules I created to filter out by specific text patterns contained in the logs.
+3.	Challenge 3: Writing IDS Rules (PNG) – Investigated the pcap file to detect PNG and GIF files. Created rules to look for their specific signature (e.g. alert tcp any any <> any any (msg: “PNG Scan”; content:”|89 50 4E 47 0D 0A 1A 0A|”; sid: 100002; rev:1;))
+4.	Challenge 4: Writing IDS Rules (Torrent Metafile) – Created a rule to detect torrent metafiles in the given pcap and analysed the output to find the name of the application, the MIME type and the hostname of the torrent metafile.
+5.	Challeng 5: Troubleshooting Rule Syntax Errors – Analysed different local.rules files and detected syntax errors in the rules.
+6.	Using External Rules (MS17-010 and Log4j) – Used the given rule file to investigate the exploitaitons.
+
+Lessons Learned: This challenge was a great way to see how Snort actually handles live and captured traffic in the field. I got plenty of hands-on practice writing rules to filter HTTP and FTP traffic , and I even learned how to use strings and grep to make binary logs readable when I needed to hunt for specific patterns. It was also cool to see how the content filter works for tracking down specific file signatures, like those for PNGs or torrent metafiles. By the end, I felt much more comfortable troubleshooting syntax errors and using external rules to investigate major exploits like Log4j and MS17-010.
+
+
